@@ -2,6 +2,19 @@
 
 Prova de conceito totalmente local e fictícia para demonstrar estornos manuais, importação em lote e automação por navegador. Não acessa nem representa qualquer ERP real.
 
+## Contexto de aprendizado
+
+O projeto nasceu da observação de um tipo de processo industrial com o qual tive
+contato no trabalho. A implementação foi feita com bastante apoio de ferramentas
+de IA e funciona como laboratório de estudo, não como demonstração de domínio
+avançado de Flask, SQLAlchemy ou Playwright.
+
+Estou usando o repositório para estudar como uma regra de negócio pode ser
+representada em uma aplicação local, como registrar histórico e como automatizar
+um fluxo de navegador de forma controlada. Antes de apresentar o projeto em uma
+entrevista, minha meta é conseguir explicar e modificar os principais caminhos
+sem depender de código gerado.
+
 ## Requisitos e instalação (Windows PowerShell)
 
 - Python 3.12 (compatível com versões recentes do Python 3)
@@ -69,27 +82,15 @@ Os testes usam um banco SQLite temporário e não alteram o banco de demonstraç
 
 No menu **Importação Excel**, envie um `.xlsx` com `codigo`, `motivo`, `observacao` e `responsavel`. O sistema valida as colunas, mostra a prévia, processa cada linha independentemente e oferece o relatório final.
 
-## Como apresentar esta prova de conceito
+## Roteiro de estudo do projeto
 
-1. Explique e simule o processo manual atual.
-2. Abra `dados/estornos_exemplo.xlsx` e destaque os casos de teste.
-3. Entre no ERP simulado e apresente o dashboard e a consulta.
-4. Faça um estorno manual e mostre confirmação, histórico e auditoria.
-5. Inicie a automação em outro terminal com `--visivel`.
-6. Mostre os estornos acontecendo no navegador e a continuidade após erros esperados.
-7. Abra o relatório gerado em `resultados/`.
-8. Mostre o log em `logs/`, o histórico exportável e os registros de auditoria no banco.
-9. Compare o fluxo manual e o automatizado.
-10. Reforce que qualquer integração real exige autorização, análise técnica, segurança e validação formal da equipe responsável pelo ERP.
-
-| Critério | Processo manual | Processo automatizado (estimado) |
-|---|---|---|
-| Tempo por item | 30–90 segundos | 3–10 segundos |
-| Erro de digitação | Médio | Baixo, conforme a planilha |
-| Rastreabilidade | Anotações dispersas | Log, relatório e auditoria |
-| Lote | Repetição manual | Processamento sequencial automático |
-
-Os valores são estimativas ilustrativas. Devem ser ajustados após medição real, em ambiente autorizado e controlado.
+1. Explicar o modelo de dados de big bags, estornos e auditoria.
+2. Percorrer a regra `processar_estorno` e justificar cada validação.
+3. Executar manualmente casos de sucesso, item inexistente e item bloqueado.
+4. Explicar como a planilha é validada antes da automação.
+5. Acompanhar uma execução do Playwright e localizar logs e relatórios.
+6. Alterar uma regra simples e adicionar um teste correspondente.
+7. Reforçar que qualquer integração real exigiria autorização, análise técnica e validação da equipe responsável pelo ERP.
 
 ## Limites de segurança
 
